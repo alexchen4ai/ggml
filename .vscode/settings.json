@@ -1,0 +1,21 @@
+{
+    "cmake.generator": "Ninja",
+    // "cmake.configureOnOpen": true,
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.installPrefix": "${workspaceFolder}/install",
+    "cmake.configureSettings": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_BUILD_TYPE": "Release"
+    },
+    "files.associations": {
+        "CMakeLists.txt": "cmake",
+        "ggml-impl.h": "c",
+        "vector": "cpp",
+        "string": "cpp",
+        "cassert": "cpp",
+        "ostream": "cpp"
+    },
+    "cmake.automaticReconfigure": false,
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": false
+}
