@@ -11,4 +11,10 @@ cmake -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build --config Debug -j8
 ```
 
-To make everything easier, we can use the `.vscode/launch.json` to automate and use the debug tool inside VSCode better. Refer to the current setup for different project that we wish to debug.
+To make everything easier, we can use the `.vscode/launch.json` to automate and use the debug tool inside VSCode better. Refer to the current setup for different project that we wish to debug. After this, we can freely setup break point, and there are four options:
+- `Continue`: Continue the execution of the program until the next breakpoint is encountered.
+- `Step Over`: Execute the current line of code and move to the next line. If the current line contains a function call, the function is executed and the result is returned.
+- `Step Into`: Execute the current line of code. If the current line contains a function call, the debugger steps into the function and stops at the first line of the function.
+- `Step Out`: Continue executing the program until the current function is completed and return to the calling function.
+
+Try to use this command to debug the program. This is very important for our later model development.
