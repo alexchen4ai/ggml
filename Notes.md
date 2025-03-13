@@ -8,7 +8,7 @@ When we develop a specific project using GGML, we should set the workspace the s
 To enable the debug setup, we should build the project using the following:
 ```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --config Debug
+cmake --build build --config Debug -j8
 ```
 
 To make everything easier, we can use the `.vscode/launch.json` to automate and use the debug tool inside VSCode better. Refer to the current setup for different project that we wish to debug.
