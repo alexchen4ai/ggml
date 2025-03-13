@@ -18,3 +18,5 @@ To make everything easier, we can use the `.vscode/launch.json` to automate and 
 - `Step Out`: Continue executing the program until the current function is completed and return to the calling function.
 
 Try to use this command to debug the program. This is very important for our later model development.
+
+Note that in the `.vscode/launch.json`, we can setup multiple testing project, and each project should have a different name, and we should add a config (a dict) in the list, and it will work.
