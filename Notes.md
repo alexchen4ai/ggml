@@ -20,3 +20,5 @@ To make everything easier, we can use the `.vscode/launch.json` to automate and 
 Try to use this command to debug the program. This is very important for our later model development.
 
 Note that in the `.vscode/launch.json`, we can setup multiple testing project, and each project should have a different name, and we should add a config (a dict) in the list, and it will work.
+
+Another useful setup is the `tasks.json`, this is to automate some build process. For example, we can define a task as build in the debug mode, then we can define it in the `"preLaunchTask": "Build Debug GGML"`, in this way the project will build before we do the debug, and we don't need to build it manually.

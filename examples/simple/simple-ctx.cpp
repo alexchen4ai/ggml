@@ -100,6 +100,9 @@ int main(void) {
     // perform computation in cpu
     struct ggml_tensor * result = compute(model);
 
+    // set some other random numbers
+    float a = 1.0f;
+
     // get the result data pointer as a float array to print
     std::vector<float> out_data(ggml_nelements(result));
     memcpy(out_data.data(), result->data, ggml_nbytes(result));
