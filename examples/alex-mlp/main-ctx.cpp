@@ -188,8 +188,8 @@ int main(int argc, char ** argv) {
     //==============================================
     // STEP 1: Read the argv and argc
     //==============================================
-    const char* default_model_path = "/home/ubuntu/nexa-ggml/examples/mlp/model/mlp.gguf";
-    const char* default_dot_path = "/home/azureuser/llama.cpp/examples/alex-mlp/model.dot";
+    const char* default_model_path = "/home/ubuntu/ggml-notes/ggml/examples/alex-mlp/model/mlp.gguf"; 
+    const char* default_dot_path = "/home/ubuntu/ggml-notes/ggml/examples/alex-mlp/model.dot"; 
     ProgramArgs args = parse_args(argc, argv, default_model_path, default_dot_path);
     
     
