@@ -27,3 +27,6 @@ embeddings = model.encode(texts, task="text-matching")
 
 # Compute similarities
 print(embeddings[0] @ embeddings[1].T)
+
+
+## We can start with roberta encoder layers 0, ane make sure this works.

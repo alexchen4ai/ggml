@@ -1,0 +1,63 @@
+graph TD
+    A[XLMRobertaLoRA] --> B[XLMRobertaModel]
+    B --> C[XLMRobertaEmbeddings]
+    B --> D[Dropout]
+    B --> E[LayerNorm]
+    B --> F[XLMRobertaEncoder]
+    B --> G[XLMRobertaPooler]
+    
+    C --> C1[ParametrizedEmbedding\nword_embeddings]
+    C --> C2[ParametrizedEmbedding\ntoken_type_embeddings]
+    C1 --> C1A[ModuleDict\nparametrizations]
+    C2 --> C2A[ModuleDict\nparametrizations]
+    C1A --> C1B[ParametrizationList]
+    C2A --> C2B[ParametrizationList]
+    C1B --> C1C[LoRAParametrization]
+    C2B --> C2C[LoRAParametrization]
+    
+    F --> F1[ModuleList\nlayers]
+    F1 --> F2[Block * 24]
+    
+    F2 --> F2A[MHA\nmixer]
+    F2 --> F2B[Dropout\ndropout1]
+    F2 --> F2C[StochasticDepth\ndrop_path1]
+    F2 --> F2D[LayerNorm\nnorm1]
+    F2 --> F2E[Mlp]
+    F2 --> F2F[Dropout\ndropout2]
+    F2 --> F2G[StochasticDepth\ndrop_path2]
+    F2 --> F2H[LayerNorm\nnorm2]
+    
+    F2A --> F2A1[RotaryEmbedding]
+    F2A --> F2A2[ParametrizedLinearResidual\nWqkv]
+    F2A --> F2A3[SelfAttention\ninner_attn]
+    F2A --> F2A4[CrossAttention\ninner_cross_attn]
+    F2A --> F2A5[ParametrizedLinear\nout_proj]
+    
+    F2A2 --> F2A2A[ModuleDict\nparametrizations]
+    F2A2A --> F2A2B[ParametrizationList]
+    F2A2B --> F2A2C[LoRAParametrization]
+    
+    F2A3 --> F2A3A[Dropout]
+    F2A4 --> F2A4A[Dropout]
+    
+    F2A5 --> F2A5A[ModuleDict\nparametrizations]
+    F2A5A --> F2A5B[ParametrizationList]
+    F2A5B --> F2A5C[LoRAParametrization]
+    
+    F2E --> F2E1[ParametrizedLinear\nfc1]
+    F2E --> F2E2[ParametrizedLinear\nfc2]
+    
+    F2E1 --> F2E1A[ModuleDict\nparametrizations]
+    F2E1A --> F2E1B[ParametrizationList]
+    F2E1B --> F2E1C[LoRAParametrization]
+    
+    F2E2 --> F2E2A[ModuleDict\nparametrizations]
+    F2E2A --> F2E2B[ParametrizationList]
+    F2E2B --> F2E2C[LoRAParametrization]
+    
+    G --> G1[ParametrizedLinear\ndense]
+    G --> G2[Tanh\nactivation]
+    
+    G1 --> G1A[ModuleDict\nparametrizations]
+    G1A --> G1B[ParametrizationList]
+    G1B --> G1C[LoRAParametrization]
