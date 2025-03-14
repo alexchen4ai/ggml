@@ -10,6 +10,17 @@
             "MIMode": "gdb",
             "miDebuggerPath": "/usr/bin/gdb",
             "preLaunchTask": "Build Debug GGML"
+        },
+        {
+            "name": "rebuild & alex-mlp ctx debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/alex-mlp",
+            "cwd": "${workspaceFolder}/examples/alex-mlp",
+            "args": ["${workspaceFolder}/examples/alex-mlp/model/mlp.gguf"],
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "preLaunchTask": "Build Debug GGML"
         }
     ]
 }

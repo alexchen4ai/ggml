@@ -22,6 +22,43 @@
  * 4. compute_graph: This is to compute the graph.
  */
 
+
+// define some helper functions first
+void print_tensor(const char* name, struct ggml_tensor* t) {
+    if (!t) {
+        fprintf(stderr, "Tensor '%s' is NULL\n", name);
+        return;
+    }
+
+    int64_t ne[GGML_MAX_DIMS] = { 1, 1, 1, 1 };
+    for (int i = 0; i < GGML_MAX_DIMS; ++i) {
+        ne[i] = t->ne[i];
+    }
+
+    fprintf(stdout, "Tensor '%s': [%" PRId64 ", %" PRId64 ", %" PRId64 ", %" PRId64 "] type=%s\n", 
+            name, ne[0], ne[1], ne[2], ne[3], ggml_type_name(t->type));
+
+    if (t->type == GGML_TYPE_F32) {
+        float* data = (float*)t->data;
+        size_t elements = ggml_nelements(t);
+        size_t max_print = std::min(elements, size_t(100));  // Limit output for large tensors
+        
+        fprintf(stdout, "Values: [");
+        for (size_t i = 0; i < max_print; i++) {
+            fprintf(stdout, "%.6f", data[i]);
+            if (i < max_print - 1) fprintf(stdout, ", ");
+        }
+        if (max_print < elements) {
+            fprintf(stdout, ", ... (%" PRId64 " more elements)", (int64_t)elements - (int64_t)max_print);
+        }
+        fprintf(stdout, "]\n");
+    } else {
+        fprintf(stdout, "Not printing values (non-F32 tensor)\n");
+    }
+}
+
+
+
 // Define the structure for a two layer MLP
 struct mlp_model {
     // Weights and biases for each layer
