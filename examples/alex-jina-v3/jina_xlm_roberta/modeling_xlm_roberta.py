@@ -67,9 +67,9 @@ def get_use_flash_attn(config: XLMRobertaFlashConfig):
     if not getattr(config, "use_flash_attn", False) or not torch.cuda.is_available():
         return False
     if importlib.util.find_spec("flash_attn") is None:
-        logger.warning(
-            "flash_attn is not installed. Using PyTorch native attention implementation."
-        )
+        # logger.warning(
+        #     "flash_attn is not installed. Using PyTorch native attention implementation."
+        # )
         return False
     return True
 

@@ -1,14 +1,14 @@
 from jina_xlm_roberta.modeling_lora import XLMRobertaLoRA
 from jina_xlm_roberta.configuration_xlm_roberta import XLMRobertaFlashConfig
+import warnings
+warnings.filterwarnings("ignore")
 
+## The essential code is inside the XLMRobertaLora class
 
 # Initialize the model, pay attention to the code_revision parameter
-config = XLMRobertaFlashConfig.from_pretrained("jinaai/jina-embeddings-v3", 
-                                              trust_remote_code=True)
+config = XLMRobertaFlashConfig.from_pretrained("jinaai/jina-embeddings-v3")
 model = XLMRobertaLoRA.from_pretrained("jinaai/jina-embeddings-v3", 
-                                       config=config,
-                                #   attn_implementation='eager',
-                                  trust_remote_code=True)
+                                       config=config)
 
 
 texts = [
