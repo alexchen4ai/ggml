@@ -1,9 +1,15 @@
-from transformers import AutoModel
+from jina_xlm_roberta.modeling_lora import XLMRobertaLoRA
+from jina_xlm_roberta.configuration_xlm_roberta import XLMRobertaFlashConfig
+
 
 # Initialize the model, pay attention to the code_revision parameter
-model = AutoModel.from_pretrained("jinaai/jina-embeddings-v3", 
-                                  code_revision='da863dd04a4e5dce6814c6625adfba87b83838aa',
+config = XLMRobertaFlashConfig.from_pretrained("jinaai/jina-embeddings-v3", 
+                                              trust_remote_code=True)
+model = XLMRobertaLoRA.from_pretrained("jinaai/jina-embeddings-v3", 
+                                       config=config,
+                                #   attn_implementation='eager',
                                   trust_remote_code=True)
+
 
 texts = [
     "Follow the white rabbit.",  # English
